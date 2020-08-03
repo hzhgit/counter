@@ -1,5 +1,7 @@
 import React from "react";
 import Counter from "../Counter";
+import store from "../../store"
+import { sendAction } from "../../action"
 
 class GroupCounter extends React.Component {
 
@@ -23,6 +25,18 @@ class GroupCounter extends React.Component {
         this.setState({ numberOfCounters: e.target.value, total: 0 })
     }
 
+    handleOnclock = () => {
+        const action  = sendAction();
+        // store.dispatch(action);
+    }
+
+    // componentDidMount(){
+    //     store.subscribe(() => {
+    //         console.log("subscribe:",store.getState())
+    //         this.state({})
+    //     })
+    // }
+
 
     render() {
         return (
@@ -35,6 +49,8 @@ class GroupCounter extends React.Component {
                             numberOfCounters={this.state.numberOfCounters} />
                     })}
                 </div>
+                <button onClick={this.handleOnclock}>点我发送一个action</button>
+                {/* <div>{store.getState().value}</div> */}
             </div>
         )
     }

@@ -22,7 +22,7 @@ class Counter extends React.Component {
 
 
     static getDerivedStateFromProps(nextProps, prevState) {
-        if (prevState.numberOfCounters != nextProps.numberOfCounters) {
+        if (prevState.numberOfCounters !== nextProps.numberOfCounters) {
             return {
                 count: 0
             };
