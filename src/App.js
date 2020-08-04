@@ -1,15 +1,14 @@
 import React from 'react';
 import './App.css';
-import GroupCounter from './components/GroupCounter'
-
+import GroupCounterContainer from './container/counterGroupContainer'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <GroupCounter/>
-      </header>
-    </div>
+      <div className="App">
+        <header className="App-header">
+          <GroupCounterContainer />
+        </header>
+      </div>
   );
 }
 

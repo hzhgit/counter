@@ -1,7 +1,5 @@
-import React from "react";
-import Counter from "../Counter";
-import store from "../../store"
-import { sendAction } from "../../action"
+import React from "react"
+import Counter from "../Counter"
 
 class GroupCounter extends React.Component {
 
@@ -11,37 +9,28 @@ class GroupCounter extends React.Component {
             numberOfCounters: 0,
             total: 0
         }
+        console.log(this.props)
     }
 
     increase = () => {
-        this.setState({ total: this.state.total + 1 })
+        // this.setState({ total: this.state.total + 1 })
+        this.props.add()
     }
 
     reduce = () => {
-        this.setState({ total: this.state.total - 1 })
+        // this.setState({ total: this.state.total - 1 })
+        this.props.reduce()
     }
 
     UpdateNumberOfCounters = (e) => {
         this.setState({ numberOfCounters: e.target.value, total: 0 })
+        this.props.clear()
     }
-
-    handleOnclock = () => {
-        const action  = sendAction();
-        // store.dispatch(action);
-    }
-
-    // componentDidMount(){
-    //     store.subscribe(() => {
-    //         console.log("subscribe:",store.getState())
-    //         this.state({})
-    //     })
-    // }
-
 
     render() {
         return (
             <div>
-                <p>Total: {this.state.total}</p>
+                <p>Total: {this.props.total}</p>
                 <p>Number of Counters: <input type="number" onChange={this.UpdateNumberOfCounters} /></p>
                 <div>
                     {new Array(Number(this.state.numberOfCounters)).fill(0).map((item, index) => {
@@ -49,8 +38,6 @@ class GroupCounter extends React.Component {
                             numberOfCounters={this.state.numberOfCounters} />
                     })}
                 </div>
-                <button onClick={this.handleOnclock}>点我发送一个action</button>
-                {/* <div>{store.getState().value}</div> */}
             </div>
         )
     }

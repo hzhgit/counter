@@ -1,11 +1,11 @@
-const sendAction = () => {
-    return {
-        type:'send_type',
-        value:0
-    }
+export const add = () => ({
+    type: "ADD"
+})
 
-}
+export const reduce = () => ({
+    type: "REDUCE"
+})
 
-module.exports = {
-    sendAction
-}
+export const clear = () => ({
+    type: "CLEAR"
+})

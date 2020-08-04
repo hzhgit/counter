@@ -12,6 +12,7 @@ class Counter extends React.Component {
 
     increase  = () => {
         this.setState({ count: this.state.count + 1 })
+        console.log(this.state.count)
         this.props.increase ()
     }
 
@@ -24,9 +25,11 @@ class Counter extends React.Component {
     static getDerivedStateFromProps(nextProps, prevState) {
         if (prevState.numberOfCounters !== nextProps.numberOfCounters) {
             return {
-                count: 0
-            };
+                count: 0,
+                numberOfCounters: nextProps.numberOfCounters
+            }
         }
+        return null;
     }
 
     render() {
